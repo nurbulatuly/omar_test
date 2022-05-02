@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fa9d04eec24dd730b0847066655312a3",
+    "content-hash": "5558903574d51fac806e8f563df2fe5c",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -64,16 +64,16 @@
         },
         {
             "name": "bavix/laravel-wallet",
-            "version": "8.4.0",
+            "version": "9.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bavix/laravel-wallet.git",
-                "reference": "fa4ce800f7959f6bb2a270884e86c0ddd2167c89"
+                "reference": "79f34401a9dcc558037f2f5182fd7c3c9562cf15"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bavix/laravel-wallet/zipball/fa4ce800f7959f6bb2a270884e86c0ddd2167c89",
-                "reference": "fa4ce800f7959f6bb2a270884e86c0ddd2167c89",
+                "url": "https://api.github.com/repos/bavix/laravel-wallet/zipball/79f34401a9dcc558037f2f5182fd7c3c9562cf15",
+                "reference": "79f34401a9dcc558037f2f5182fd7c3c9562cf15",
                 "shasum": ""
             },
             "require": {
@@ -93,11 +93,11 @@
                 "infection/infection": "~0.26",
                 "laravel/cashier": "^13.8",
                 "nunomaduro/collision": "^6.2",
-                "orchestra/testbench": "^7.3",
-                "phpstan/phpstan": "^1.5",
+                "orchestra/testbench": "^7.4",
+                "phpstan/phpstan": "^1.6",
                 "phpunit/phpunit": "^9.5",
                 "rector/rector": "^0.12",
-                "symplify/easy-coding-standard": "^10.1",
+                "symplify/easy-coding-standard": "^10.2",
                 "vimeo/psalm": "^4.22"
             },
             "suggest": {
@@ -142,9 +142,9 @@
             ],
             "support": {
                 "issues": "https://github.com/bavix/laravel-wallet/issues",
-                "source": "https://github.com/bavix/laravel-wallet/tree/8.4.0"
+                "source": "https://github.com/bavix/laravel-wallet/tree/9.0.0"
             },
-            "time": "2022-04-20T19:43:59+00:00"
+            "time": "2022-05-02T07:52:12+00:00"
         },
         {
             "name": "brick/math",
@@ -8724,5 +8724,5 @@
         "php": "^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.2.0"
 }
