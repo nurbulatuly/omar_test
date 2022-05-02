@@ -7,8 +7,10 @@
     "require": {
         "php": "^8.0",
         "bavix/laravel-wallet": "^8.4",
+        "cviebrock/eloquent-sluggable": "^9.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "konekt/enum": "^4.0",
         "laravel/framework": "^9.0",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
