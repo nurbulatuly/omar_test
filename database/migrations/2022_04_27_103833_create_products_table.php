@@ -26,6 +26,8 @@ return new class extends Migration
             $table->text('meta_description')->nullable();
             $table->softDeletes();
             $table->timestamps();
+
+            $table->string('url_id'); // UID from 1C
         });
     }
 

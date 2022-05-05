@@ -24,8 +24,6 @@ return new class extends Migration
                 ->onDelete('cascade');
 
             $table->primary(['property_value_id', 'model_id', 'model_type'], 'pk_model_property_values');
-
-            $table->timestamps();
         });
     }
 
