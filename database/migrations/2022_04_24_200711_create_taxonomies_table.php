@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('slug')->nullable();
             $table->boolean('on_main_page')->nullable();
             $table->integer('order_on_main_page')->nullable();
+            $table->string('foreign_uid')->unique()->nullable();
             $table->timestamps();
 
             $table->unique('slug');

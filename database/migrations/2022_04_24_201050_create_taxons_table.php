@@ -23,7 +23,8 @@ return new class extends Migration
             $table->string('ext_title', 511)->nullable();
             $table->text('meta_keywords')->nullable();
             $table->text('meta_description')->nullable();
-
+            $table->string('foreign_uid')->unique()->nullable();
+            $table->string('foreign_parent_uid')->index()->nullable();
             $table->timestamps();
 
             $table->foreign('taxonomy_id')

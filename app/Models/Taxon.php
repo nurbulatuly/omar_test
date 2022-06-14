@@ -16,6 +16,8 @@ class Taxon extends Model implements TaxonContract
 {
     use HasFactory, Sluggable, SluggableScopeHelpers;
 
+    protected $table = 'taxons';
+
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
     private Collection $_parents;
