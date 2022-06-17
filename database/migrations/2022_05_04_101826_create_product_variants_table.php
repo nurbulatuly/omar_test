@@ -20,14 +20,20 @@ return new class extends Migration
             $table->string('sku');
             $table->decimal('original_price', 18, 2)->nullable();
             $table->decimal('price', 18, 2)->nullable();
-            $table->foreignId('product_id');
+            $table->foreignId('product_id')->unsigned()->nullable();
             $table->foreignId('stock_id')->nullable();
-            $table->unsignedBigInteger('on_stock');
+            $table->unsignedBigInteger('on_stock')->nullable();
             $table->decimal('weight', 15, 4)->nullable();
             $table->decimal('height', 15, 4)->nullable();
             $table->decimal('width', 15, 4)->nullable();
             $table->decimal('length', 15, 4)->nullable();
             $table->timestamps();
+
+
+            $table->foreign('product_id')
+                ->references('id')
+                ->on('products')
+                ->onDelete('cascade');
         });
     }
 
