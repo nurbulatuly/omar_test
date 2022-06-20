@@ -3,12 +3,12 @@
 namespace App\Models;
 
 use App\Contracts\Product\MasterProduct;
-use App\Contracts\Product\MasterProductVariant;
+use App\Traits\HasPropertyValues;
+use App\Traits\HasTaxons;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Product extends Model implements MasterProduct
@@ -16,6 +16,8 @@ class Product extends Model implements MasterProduct
     use Sluggable;
     use SluggableScopeHelpers;
     use HasFactory;
+    use HasTaxons;
+    use HasPropertyValues;
 
     protected $fillable = ['title','foreign_uid'];
 
@@ -28,11 +30,6 @@ class Product extends Model implements MasterProduct
                 'source' => 'name'
             ]
         ];
-    }
-
-    public function taxon() : BelongsTo
-    {
-        return $this->belongsTo(Taxon::class);
     }
 
     public function variants() : HasMany

@@ -16,6 +16,7 @@ use Illuminate\Support\Collection;
 class Property extends Model implements PropertyContract
 {
     use Sluggable, HasFactory;
+
     use SluggableScopeHelpers {
         findBySlug as protected sluggableFindBySlug;
     }

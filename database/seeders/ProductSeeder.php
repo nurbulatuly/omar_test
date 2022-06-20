@@ -22,16 +22,17 @@ class ProductSeeder extends Seeder
             ->select('ddappBrendlayn','Nomenklatura_UID_TMC','NomenklaturnayaGruppa_UID_NomGruppa')
             ->get()
             ->unique('ddappBrendlayn');
+
         foreach ($products as $product){
-            $taxon = Taxon::where('foreign_uid',$product->NomenklaturnayaGruppa_UID_NomGruppa)
-                ->first();
-            $newProduct = Product::create([
+            $taxon = Taxon::where('foreign_uid',$product->NomenklaturnayaGruppa_UID_NomGruppa)->first();
+
+            $newProduct = \Vanilo\Framework\Models\Product::create([
                 'title' => $product->ddappBrendlayn,
                 'foreign_uid' => $product->Nomenklatura_UID_TMC
             ]);
+
             if ($taxon){
-                $newProduct->taxon()->associate($taxon);
-                $newProduct->save();
+                $newProduct->addTaxon($taxon);
             }
         }
 

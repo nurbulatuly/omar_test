@@ -10,7 +10,7 @@ trait HasTaxons
     public function taxons(): MorphToMany
     {
         return $this->morphToMany(
-            Taxon::modelClass(),
+            Taxon::class,
             'model',
             'model_taxons',
             'model_id',

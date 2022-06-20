@@ -39,7 +39,8 @@ class ProductVariantSeeder extends Seeder
             $productVariant = ProductVariant::create([
                 'name' => $tmcProduct->Naimenovanie,
                 'sku' => $tmcProduct->kod,
-                'price' => $productVariantPrice
+                'price' => $productVariantPrice,
+                'product_id' => $product->id
             ]);
             if ($product){
                 $productVariant->product()->associate($product);
