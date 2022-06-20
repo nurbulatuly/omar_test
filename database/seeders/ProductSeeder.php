@@ -32,9 +32,9 @@ class ProductSeeder extends Seeder
                 'title' => $product->ddappBrendlayn,
                 'foreign_uid' => $product->Nomenklatura_UID_TMC
             ]);
+
             if ($taxon){
-                $newProduct->taxon()->associate($taxon);
-                $newProduct->save();
+                $newProduct->addTaxon($taxon);
             }
         }
 
