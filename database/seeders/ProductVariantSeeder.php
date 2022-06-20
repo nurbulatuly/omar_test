@@ -18,28 +18,23 @@ class ProductVariantSeeder extends Seeder
      */
     public function run()
     {
-        // Vse producti iz TMTs
         $tmcProducts = DB::table('TMTs')
+            ->leftJoin('TsenyTMTs', function ($join){
+                $join->on('TMTs.Nomenklatura_UID_TMC','=','TsenyTMTs.Nomenklatura_UID_TMC');
+            })
             ->where('OsnovnoyShtrikhKod','!=','')
-            ->select('Naimenovanie','kod','Nomenklatura_UID_TMC','ddappBrendlayn')
             ->get();
 
+        $products = Product::all();
         foreach ($tmcProducts as $tmcProduct){
-            // Svyazannaya cena po TMTs
-            $tmcPriceOfProduct = DB::table('TsenyTMTs')
-                ->where('Nomenklatura_UID_TMC', $tmcProduct->Nomenklatura_UID_TMC)
-                ->select('Tsena')
-                ->first();
-            $productVariantPrice = 0;
-            if($tmcPriceOfProduct){
-                $productVariantPrice = $tmcPriceOfProduct->Tsena;
-            }
             //
-            $product = Product::where('title',$tmcProduct->ddappBrendlayn)->first();
+            $product = $products->first(function ($item) use ($tmcProduct){
+                return $item->title == $tmcProduct->ddappBrendlayn;
+            });
             $productVariant = ProductVariant::create([
                 'name' => $tmcProduct->Naimenovanie,
-                'sku' => $tmcProduct->kod,
-                'price' => $productVariantPrice
+                'sku' => $tmcProduct->Kod,
+                'price' => $tmcProduct->Tsena
             ]);
             if ($product){
                 $productVariant->product()->associate($product);

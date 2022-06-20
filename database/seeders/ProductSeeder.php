@@ -22,9 +22,12 @@ class ProductSeeder extends Seeder
             ->select('ddappBrendlayn','Nomenklatura_UID_TMC','NomenklaturnayaGruppa_UID_NomGruppa')
             ->get()
             ->unique('ddappBrendlayn');
+
+        $taxons = Taxon::all();
         foreach ($products as $product){
-            $taxon = Taxon::where('foreign_uid',$product->NomenklaturnayaGruppa_UID_NomGruppa)
-                ->first();
+            $taxon = $taxons->first(function ($item) use ($product){
+                return $item->foreign_uid == $product->NomenklaturnayaGruppa_UID_NomGruppa;
+            });
             $newProduct = Product::create([
                 'title' => $product->ddappBrendlayn,
                 'foreign_uid' => $product->Nomenklatura_UID_TMC

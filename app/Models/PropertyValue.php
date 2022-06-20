@@ -53,10 +53,10 @@ class PropertyValue extends Model implements PropertyValueContract
         return $this->property->getType()->transformValue((string) $this->value, $this->settings);
     }
 
-    public function scopeWithUniqueSlugConstraints(Builder $query, Model $model, $attribute, $config, $slug)
-    {
-        return $query->where('property_id', $model->property->id);
-    }
+//    public function scopeWithUniqueSlugConstraints(Builder $query, Model $model, $attribute, $config, $slug)
+//    {
+//        return $query->where('property_id', $model->property->id);
+//    }
 
     public function sluggable(): array
     {

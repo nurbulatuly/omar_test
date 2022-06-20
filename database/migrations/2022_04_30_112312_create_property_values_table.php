@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('property_values', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('property_id');
+            $table->foreignId('property_id')->nullable();
             $table->string('value');
             $table->string('title');
             $table->integer('priority')->nullable();
@@ -23,6 +23,8 @@ return new class extends Migration
             $table->softDeletes();
             $table->timestamps();
 
+
+            $table->string('foreign_product_variant_uid')->nullable();
 
             $table->foreign('property_id')
                 ->references('id')
