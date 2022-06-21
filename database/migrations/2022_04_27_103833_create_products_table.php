@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->foreignId('taxon_id')->unsigned()->nullable();
-            $table->string('title');
+            $table->string('title')->unique();
             $table->string('slug')->nullable();
             $table->string('sku')->nullable();
             $table->text('excerpt')->nullable();

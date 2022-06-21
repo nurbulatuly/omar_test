@@ -23,10 +23,12 @@ class ProductSeeder extends Seeder
             ->get()
             ->unique('ddappBrendlayn');
 
+        $taxons = Taxon::all();
         foreach ($products as $product){
-            $taxon = Taxon::where('foreign_uid',$product->NomenklaturnayaGruppa_UID_NomGruppa)->first();
-
-            $newProduct = \Vanilo\Framework\Models\Product::create([
+            $taxon = $taxons->first(function ($item) use ($product){
+                return $item->foreign_uid == $product->NomenklaturnayaGruppa_UID_NomGruppa;
+            });
+            $newProduct = Product::create([
                 'title' => $product->ddappBrendlayn,
                 'foreign_uid' => $product->Nomenklatura_UID_TMC
             ]);
