@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('link_groups', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('link_type_id')->unsigned();
-            $table->bigInteger('property_id')->nullable();
+            $table->foreignId('link_type_id')->unsigned();
+            $table->foreignId('property_id')->nullable();
             $table->timestamps();
 
             $table->foreign('link_type_id')

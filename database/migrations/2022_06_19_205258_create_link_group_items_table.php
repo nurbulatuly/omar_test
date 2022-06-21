@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('link_group_items', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('link_group_id')->unsigned();
-            $table->bigInteger('linkable_id')->unsigned();
+            $table->foreignId('link_group_id')->unsigned();
+            $table->foreignId('linkable_id')->unsigned();
             $table->string('linkable_type');
             $table->timestamps();
 
