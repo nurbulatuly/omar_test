@@ -4,6 +4,10 @@ namespace App\Foundation\Search;
 
 
 use App\Contracts\Categorization\Taxon;
+use App\Models\Product;
+use App\Models\PropertyValue;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 
@@ -13,9 +17,9 @@ class ProductFinder
 
     public function __construct()
     {
-        $this->queryBuilder = ProductProxy::query()
+        $this->queryBuilder = Product::query()
             ->withGlobalScope('withoutInactiveProducts', function (Builder $queryBuilder) {
-                return $queryBuilder->whereIn('state', ProductStateProxy::getActiveStates());
+                return $queryBuilder->whereIn('state', 'active');
             });
     }
 
@@ -133,7 +137,7 @@ class ProductFinder
     public function havingPropertyValuesByName(string $property, array $values): self
     {
         return $this->havingPropertyValues(
-            PropertyValueProxy::query()
+            PropertyValue::query()
                 ->select('property_values.*')
                 ->join('properties', 'properties.id', '=', 'property_values.property_id')
                 ->where('properties.slug', '=', $property)
