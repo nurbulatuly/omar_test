@@ -19,7 +19,7 @@ class ProductFinder
     {
         $this->queryBuilder = Product::query()
             ->withGlobalScope('withoutInactiveProducts', function (Builder $queryBuilder) {
-                return $queryBuilder->whereIn('state', 'active');
+                return $queryBuilder->whereIn('state', ['active']);
             });
     }
 

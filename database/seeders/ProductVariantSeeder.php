@@ -31,14 +31,13 @@ class ProductVariantSeeder extends Seeder
             $product = $products->first(function ($item) use ($tmcProduct){
                 return $item->title == $tmcProduct->ddappBrendlayn;
             });
-            $productVariant = ProductVariant::create([
-                'name' => $tmcProduct->Naimenovanie,
-                'sku' => $tmcProduct->Kod,
-                'price' => $tmcProduct->Tsena
-            ]);
             if ($product){
-                $productVariant->product()->associate($product);
-                $productVariant->save();
+                $product->variants()->create([
+                    'name' => $tmcProduct->Naimenovanie,
+                    'sku' => $tmcProduct->Kod,
+                    'foreign_uid' => $tmcProduct->Nomenklatura_UID_TMC,
+                    'price' => $tmcProduct->Tsena,
+                ]);
             }
         }
     }

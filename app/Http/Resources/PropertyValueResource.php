@@ -2,10 +2,9 @@
 
 namespace App\Http\Resources;
 
-use App\Models\Product;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class TaxonResource extends JsonResource
+class PropertyValueResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,7 +16,8 @@ class TaxonResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name
+            'value' => $this->value,
+            'title' => $this->title
         ];
     }
 }

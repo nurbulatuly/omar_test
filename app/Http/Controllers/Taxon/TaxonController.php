@@ -12,10 +12,8 @@ class TaxonController extends Controller
     {
     }
 
-    public function fetchTaxons()
+    public function getTaxon($id)
     {
-        $taxons =$this->taxonService->getTaxons();
-
-        return $taxons;
+        return $this->taxonService->getTaxon($id);
     }
 }

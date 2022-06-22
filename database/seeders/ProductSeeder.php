@@ -30,6 +30,7 @@ class ProductSeeder extends Seeder
             });
             $newProduct = Product::create([
                 'title' => $product->ddappBrendlayn,
+                'state' => 2,
                 'foreign_uid' => $product->Nomenklatura_UID_TMC
             ]);
 

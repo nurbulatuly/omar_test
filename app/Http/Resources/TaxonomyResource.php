@@ -17,6 +17,7 @@ class TaxonomyResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'on_main_page' => $this->on_main_page,
             'taxons' => TaxonResource::collection($this->taxons)
         ];
     }

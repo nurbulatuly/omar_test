@@ -7,10 +7,8 @@ use App\Models\Taxon;
 
 class TaxonService
 {
-    public function getTaxons()
+    public  function getTaxon($id)
     {
-        $taxons = TaxonResource::collection(Taxon::all());
-
-        return $taxons;
+        return new TaxonResource(Taxon::findOrFail($id));
     }
 }

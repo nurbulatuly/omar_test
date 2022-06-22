@@ -18,5 +18,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/categories', [\App\Http\Controllers\Taxonomy\TaxonomyController::class, 'fetchTaxonnomies']);
-Route::get('/taxons',[\App\Http\Controllers\Taxon\TaxonController::class,'fetchTaxons']);
+Route::get('/сategories', [\App\Http\Controllers\Taxonomy\TaxonomyController::class, 'fetchTaxonnomies']);
+Route::get('/сategories/{id}', [\App\Http\Controllers\Taxon\TaxonController::class, 'getTaxon']);
+Route::get('/сategories/{id}/products', [\App\Http\Controllers\Product\ProductController::class, 'getProductsByCategory']);

@@ -29,6 +29,8 @@ return new class extends Migration
             $table->decimal('length', 15, 4)->nullable();
             $table->timestamps();
 
+            $table->string('foreign_uid')->nullable();
+
 
             $table->foreign('product_id')
                 ->references('id')

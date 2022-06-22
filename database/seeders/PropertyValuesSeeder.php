@@ -25,17 +25,15 @@ class PropertyValuesSeeder extends Seeder
         $properties = Property::all();
 
         foreach ($propertyValuesTmc as $propertyValueTmc){
-            $propertyValue = PropertyValue::create([
-                'title'=> $propertyValueTmc->Koeffitsient,
-                'foreign_product_variant_uid' => $propertyValueTmc->Vladelets_UID_Vladelec
-            ]);
-
             $property = $properties->first(function ($item) use ($propertyValueTmc){
                 return $item->name == $propertyValueTmc->EdinitsaPoKlassifikatoru;
             });
             if ($property){
-                $propertyValue->property()->associate($property);
-                $propertyValue->save();
+                $property-> propertyValues()->create([
+                    'title' => $propertyValueTmc->Koeffitsient,
+                    'foreign_product_variant_uid' => $propertyValueTmc->Vladelets_UID_Vladelec
+
+                ]);
             }
         }
 

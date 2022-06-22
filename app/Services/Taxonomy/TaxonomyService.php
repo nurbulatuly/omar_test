@@ -8,10 +8,9 @@ use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class TaxonomyService
 {
-    public function getTaxonomies(): AnonymousResourceCollection
+    public function getTaxonomies():AnonymousResourceCollection
     {
         $taxonomies = TaxonomyResource::collection(Taxonomy::all());
-
         return $taxonomies;
     }
 }
