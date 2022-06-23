@@ -15,6 +15,6 @@ class ProductService
     public function getProductsByCategory($id)
     {
         $taxon = Taxon::find($id);
-        return ProductResource::collection($this->productFinder->withinTaxon($taxon)->getResults());
+        return ProductResource::collection($this->productFinder->withinTaxon($taxon)->simplePaginate(20));
     }
 }
